@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
 }
@@ -11,10 +15,15 @@ header {
   background-image: url("../img/bgr1.jpg");
   background-size: cover;
   background-position: center;
-  min-height: 36vh;
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+  height: 100vh;
+
   display: grid;
   grid-template-rows: auto 1fr;
-  padding: 24px 0;
+
+  padding: 24px 0 0;
 }
 
 .navigation {
@@ -26,6 +35,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  flex-wrap: wrap;
+  row-gap: 12px;
 }
 
 .brand {
@@ -84,9 +96,12 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
+
   gap: 10px;
-  padding: 0 24px;
-  transform: translateY(-80px);
+  padding: 0 24px 32px;
+  /* unten Luft, damit es nie "klebt" */
+
+  line-height: 1.05;
 }
 
 .hero-title {
@@ -263,9 +278,19 @@ header {
 
 
 .footer {
-  background: #fff;
+  background: #111;
   padding: 18px 24px;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.footer-flower {
+  display: none;
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  width: 70px;
+  height: auto;
 }
 
 .footer-inner {
@@ -312,15 +337,55 @@ header {
 
 @media (max-width: 400px) {
 
+  header {
+    padding-top: 16px;
+  }
+
+  .navigation {
+    padding: 0 16px;
+  }
+
+  .call-btn {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .call-icon {
+    width: 14px;
+    height: 14px;
+  }
+
   .howto-steps {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: clamp(28px, 10vw, 40px);
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+
+  .hero-sub {
+    font-size: 12px;
+    letter-spacing: 1.5px;
   }
 
 }
 
 @media (max-width: 500px) {
+
+
+  .navigation {
+    padding: 0 16px;
+  }
+
+  .call-btn {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
 
   .menu {
     display: none;
@@ -358,6 +423,13 @@ header {
     }
   }
 
+  .footer-flower {
+    display: block;
+  }
 
+  .footer-inner {
+    flex-direction: column;
+    gap: 14px;
+  }
 
 }
